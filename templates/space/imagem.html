@@ -5,6 +5,13 @@
     <div class="pagina-inicial">
         <header class="cabecalho">
             <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
+            
+            {% for message in messages %}
+            <div class="alert alert-primary">
+                <p id="messages">{{ message }}</p>
+            </div>
+            {% endfor %}
+            
             <div class="cabecalho__busca">
                 <div class="busca__fundo">
                     <input class="busca__input" type="text" placeholder="O que você procura?">
@@ -18,7 +25,7 @@
                     <a href="{% url 'index' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
                     <a href="#"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
                     <a href="#"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
-                    <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
+                    <a href="{% url 'logout' %}"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Logout</a>
                 </nav>
             </section>
             <section class="conteudo">
