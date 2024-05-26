@@ -44,3 +44,24 @@ class CadastroForms(forms.Form):
                                      widget=forms.PasswordInput(
                                          attrs={"class": "form-control",
                                                 "placeholder": "Confirme sua senha"}))
+    
+    def clean_nome_usuario(self):
+        nome = self.cleaned_data["nome_usuario"]
+
+        if nome:
+            nome = nome.strip()
+            if " " in nome:
+                raise forms.ValidationError("Este campo não aceita espaços")
+            else:
+                return nome
+            
+
+    def clean_confirma_senha(self):
+        senha_1 = self.cleaned_data["senha"]
+        senha_2 = self.cleaned_data["confirma_senha"]
+
+        if senha_1 and senha_2:
+            if senha_1 != senha_2:
+                raise forms.ValidationError("As senhas nao conferem !")   
+            else:
+                return senha_2

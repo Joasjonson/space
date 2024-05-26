@@ -39,7 +39,7 @@ def cadastro(request):
 
         if form.is_valid():
             if form['senha'].value() != form['confirma_senha'].value():
-                messages.error(request, "Senhas nao conferem !")
+                messages.error(request, "As senhas nao conferem !")
                 return redirect("cadastro")
             
             nome = form["nome_usuario"].value()
